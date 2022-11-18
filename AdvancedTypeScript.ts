@@ -110,3 +110,23 @@ let idOne: Id<string>;
 // equal to let idOne: StringId;
 let idTwo: Id<number>;
 // equal to let idTwo: NumberId;
+
+/**
+ * Utility types
+Utility types are helper tools to facilitate common type transformations. Typescript offers many utility types.
+ Too many to cover in this blog post. Below you can find a selection of the ones I use the most.
+The official TypeScript documentation offers a great list of all utility types.
+Partial
+The Partial utility type allows you to transform an interface into a new interface where all properties are optional.
+interface MovieChar
+ */
+interface MovieCharacter {
+    firstname: string;
+    name: string;
+    movie: string;
+}
+function registerCharacter(character: Partial<MovieCharacter>) { }
+// 👍
+registerCharacter({firstname: 'Frodo',});
+// 👍
+registerCharacter({firstname: 'Frodo',name: 'Baggins',});

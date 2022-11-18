@@ -44,4 +44,8 @@ function getCharacter() {
 var idOne;
 // equal to let idOne: StringId;
 var idTwo;
-// equal to let idTwo: NumberId;
+function registerCharacter(character) { }
+// 👍
+registerCharacter({ firstname: 'Frodo' });
+// 👍
+registerCharacter({ firstname: 'Frodo', name: 'Baggins' });
