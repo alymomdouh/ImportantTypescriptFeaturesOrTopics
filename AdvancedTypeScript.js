@@ -13,13 +13,35 @@ orderProduct(1);
 // Ordering product with id 1
 // 👍
 orderProduct('123-abc');
-// Ordering product with id 123-abc
-// 👎  
-orderProduct({ name: 'foo' });
 function transferPlayer(player) { }
 // 👍
 transferPlayer({ name: 'Ramos', firstname: 'Sergio', club: 'PSG' });
-// that will run 
-// 👎 Argument is not assignable to Person & FootballPlayer
-transferPlayer({ name: 'Ramos', firstname: 'Sergio' });
-console.log(characterProps);
+var simpleMenu = {
+    starter: 'Salad',
+    pizza: 'Pepperoni',
+    beverage: 'Coke',
+    dessert: 'Vanilla ice cream'
+};
+function adjustMenu(menu, menuEntry, change) {
+    menu[menuEntry] = change;
+}
+// 👍
+adjustMenu(simpleMenu, 'pizza', 'Hawaii');
+// 👍
+adjustMenu(simpleMenu, 'beverage', 'Beer');
+// 👎 Type - 'bevereger' is not assignable
+//adjustMenu(simpleMenu, 'bevereger', 'Beer');
+// 👎 Wrong property - 'coffee' is not assignable
+//adjustMenu(simpleMenu, 'coffee', 'Beer');
+var firstname = 'Frodo';
+var name1;
+function getCharacter() {
+    return {
+        firstname: 'Frodo',
+        name: 'Baggins'
+    };
+}
+var idOne;
+// equal to let idOne: StringId;
+var idTwo;
+// equal to let idTwo: NumberId;

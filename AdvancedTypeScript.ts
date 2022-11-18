@@ -15,7 +15,7 @@ orderProduct(1);
 orderProduct('123-abc');
 // Ordering product with id 123-abc
 // 👎  
-orderProduct({ name: 'foo' });
+//orderProduct({ name: 'foo' });
 // this give error Argument of type '{ name: string; }' is not assignable to parameter of type 'string | number'
 
 /**
@@ -35,7 +35,7 @@ function transferPlayer(player: Person & FootballPlayer) { }
 transferPlayer({ name: 'Ramos', firstname: 'Sergio', club: 'PSG' });
 // that will run 
 // 👎 Argument is not assignable to Person & FootballPlayer
-transferPlayer({ name: 'Ramos', firstname: 'Sergio' });
+//transferPlayer({ name: 'Ramos', firstname: 'Sergio' });
 // Property 'club' is missing in type 
 
 /**
@@ -71,9 +71,9 @@ adjustMenu(simpleMenu, 'pizza', 'Hawaii');
 // 👍
 adjustMenu(simpleMenu, 'beverage', 'Beer');
 // 👎 Type - 'bevereger' is not assignable
-adjustMenu(simpleMenu, 'bevereger', 'Beer');
+//adjustMenu(simpleMenu, 'bevereger', 'Beer');
 // 👎 Wrong property - 'coffee' is not assignable
-adjustMenu(simpleMenu, 'coffee', 'Beer');
+//adjustMenu(simpleMenu, 'coffee', 'Beer');
 let firstname = 'Frodo';
 let name1: typeof firstname;
 function getCharacter() {
@@ -90,3 +90,23 @@ type Character = {
   name: string;
 }
 */
+
+/**
+ * Conditional types
+The conditional ternary operator is a very well-known operator in Javascript. 
+The ternary operator takes three operands. A condition, a return type if the condition is true, 
+and a return type is false.
+condition ? return
+condition ? returnTypeIfTrue : returnTypeIfFalse;
+ */
+interface StringId {
+    id: string;
+}
+interface NumberId {
+    id: number;
+}
+type Id<T> = T extends string ? StringId : NumberId;
+let idOne: Id<string>;
+// equal to let idOne: StringId;
+let idTwo: Id<number>;
+// equal to let idTwo: NumberId;
