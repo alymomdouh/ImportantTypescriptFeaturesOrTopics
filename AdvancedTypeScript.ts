@@ -27,18 +27,66 @@ interface Person {
     name: string;
     firstname: string;
 }
-
 interface FootballPlayer {
     club: string;
 }
-
 function transferPlayer(player: Person & FootballPlayer) { }
-
 // 👍
 transferPlayer({ name: 'Ramos', firstname: 'Sergio', club: 'PSG' });
 // that will run 
 // 👎 Argument is not assignable to Person & FootballPlayer
 transferPlayer({ name: 'Ramos', firstname: 'Sergio' });
-// console.error( Property 'club' is missing in type);
+// Property 'club' is missing in type 
 
-
+/**
+ * Keyof
+Now that we know the union type. Let’s have a look at the keyof o perator. 
+The keyof operator takes the keys of an interface or an object and produces a union type.
+ */
+interface MovieCharacter {
+    firstname: string;
+    name: string;
+    movie: string;
+}
+type characterProps = keyof MovieCharacter;
+// a same like this 
+type characterProps1 = 'firstname' | 'name' | 'movie';
+interface PizzaMenu {
+    starter: string;
+    pizza: string;
+    beverage: string;
+    dessert: string;
+}
+const simpleMenu: PizzaMenu = {
+    starter: 'Salad',
+    pizza: 'Pepperoni',
+    beverage: 'Coke',
+    dessert: 'Vanilla ice cream',
+};
+function adjustMenu(menu: PizzaMenu, menuEntry: keyof PizzaMenu, change: string,) {
+    menu[menuEntry] = change;
+}
+// 👍
+adjustMenu(simpleMenu, 'pizza', 'Hawaii');
+// 👍
+adjustMenu(simpleMenu, 'beverage', 'Beer');
+// 👎 Type - 'bevereger' is not assignable
+adjustMenu(simpleMenu, 'bevereger', 'Beer');
+// 👎 Wrong property - 'coffee' is not assignable
+adjustMenu(simpleMenu, 'coffee', 'Beer');
+let firstname = 'Frodo';
+let name1: typeof firstname;
+function getCharacter() {
+    return {
+        firstname: 'Frodo',
+        name: 'Baggins',
+    };
+}
+type Character = ReturnType<typeof getCharacter>;
+/*
+equal to 
+type Character = {
+  firstname: string;
+  name: string;
+}
+*/
