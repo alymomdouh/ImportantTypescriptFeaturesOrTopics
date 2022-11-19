@@ -49,3 +49,34 @@ function registerCharacter(character) { }
 registerCharacter({ firstname: 'Frodo' });
 // 👍
 registerCharacter({ firstname: 'Frodo', name: 'Baggins' });
+/**
+ * Required
+Required does the opposite of Partial. It takes an existing interface with optional properties
+and transforms it into a type where all properties are required.
+ */
+// interface MovieCharacter {
+//     firstname?: string;
+//     name?: string;
+//     movie?: string;
+// }
+function hireActor(character) { }
+// 👍
+hireActor({ firstname: 'Frodo', name: 'Baggins', movie: 'The Lord of the Rings' });
+// 👎
+//hireActor({ firstname: 'Frodo', name: 'Baggins' });
+/**
+  // Extract
+//Extract allows you to extract typing information from a type. Extract accepts two Parameters,
+//first the Interface and second the type that should be extracted.
+
+type MovieCharacters =
+    | 'Harry Potter'
+    | 'Tom Riddle'
+    | { firstname: string; name: string };
+
+type hpCharacters = Extract<MovieCharacters, string>;
+// equal to type hpCharacters = 'Harry Potter' | 'Tom Riddle';
+
+type hpCharacters = Extract<MovieCharacters, { firstname: string }>;
+// equal to type hpCharacters = {firstname: string; name: string };
+*/
