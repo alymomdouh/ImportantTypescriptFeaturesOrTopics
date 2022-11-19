@@ -167,10 +167,24 @@ type hpCharacters = Extract<MovieCharacters, { firstname: string }>;
  // Exclude does the opposite of extract.
  // It allows you to generate a new type by excluding a type.
 
- */
 type MovieCharacters = 'Harry Potter' | 'Tom Riddle' | { firstname: string; name: string };
 type hpCharacters = Exclude<MovieCharacters, string>;
-// equal to type hpCharacters = {firstname: string; name: string };
-
+ // equal to type hpCharacters = {firstname: string; name: string };
 type hpCharacters1 = Exclude<MovieCharacters, { firstname: string }>;
-  // equal to type hpCharacters = 'Harry Potter' | 'Tom Riddle';
+   // equal to type hpCharacters = 'Harry Potter' | 'Tom Riddle';
+ */
+
+/**
+ * Infer type
+ * Infer type infer allows you to create a new type. 
+It's similar to creating a variable in Javascript with the keyword var, let or const.
+type flattenArrayType<T> = T extends Array<infer ArrayType> ? ArrayType : T;
+type foo1 = flattenArrayType<string[]>;
+// equal to type foo = string;
+type foo2 = flattenArrayType<number[]>;
+// equal to type foo = number;
+type foo3 = flattenArrayType<number>;
+// equal to type foo = number;
+ */
+
+
