@@ -187,4 +187,24 @@ type foo3 = flattenArrayType<number>;
 // equal to type foo = number;
  */
 
+/**
+ * Mapped types
+Mapped types are a great way of transforming existing types into new types. 
+Therefore the term map. Mapped types are compelling and allow us to create custom utility types
+
+interface Character {
+    playInFantasyMovie: () => void;
+    playInActionMovie: () => void;
+}
+type toFlags<Type> = { [Property in keyof Type]: boolean };
+type characterFeatures1 = toFlags<Character>;
+//equal to or a same like 
+type characterFeatures2 = {
+    playInFantasyMovie: boolean;
+    playInActionMovie: boolean;
+}
+ */
+
+
+
 
