@@ -7,3 +7,19 @@
 tsc filename.ts 
 6- to run the code 
  node filename.js
+ ---------------------------------------------------
+ content 
+ --------Advanced TypeScript------
+Typescript is awesome. It offers so many great features. 
+Here’s a summary of some of the greatest advanced Typescript features.
+    1-Union and intersection types
+    2-Keyof
+    3-Typeof
+    4-Conditional types
+    5-Utility types
+        5-1.Partial
+        5-2.Required
+        5-3.Extract
+        5-4.Exclude
+    6-Infer type
+    7-Mapped types
